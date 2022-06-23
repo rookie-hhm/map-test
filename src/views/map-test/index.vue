@@ -63,23 +63,23 @@ export default {
       let marker = new window.BMapGL.Marker(pt, {
         icon: myIcon,
       });
-      marker.addEventListener("click", (e) => {
-        let opts = {
-          width: 300,
-          height: 200,
-          title: `<div>13232</div>`, // 信息窗口标题
-        };
-        let infoWindow = new window.BMapGL.InfoWindow(
-          `
-          <p class="body-address">dddd</p>
-        `,
-          opts
-        );
-        mapObj.openInfoWindow(
-          infoWindow,
-          new window.BMapGL.Point(params.longitude, params.latitude)
-        ); // 打开信息窗口
-      });
+      // marker.addEventListener("click", (e) => {
+      //   let opts = {
+      //     width: 300,
+      //     height: 200,
+      //     title: `<div>13232</div>`, // 信息窗口标题
+      //   };
+      //   let infoWindow = new window.BMapGL.InfoWindow(
+      //     `
+      //     <p class="body-address">dddd</p>
+      //   `,
+      //     opts
+      //   );
+      //   mapObj.openInfoWindow(
+      //     infoWindow,
+      //     new window.BMapGL.Point(params.longitude, params.latitude)
+      //   ); // 打开信息窗口
+      // });
       return marker;
     },
     onClick(e) {
@@ -88,7 +88,7 @@ export default {
       getSingleInfo
         .then((resData) => {
           const res = resData[count]
-          let currentPos = JSON.parse(JSON.stringify(e));
+          let currentPos = e
           currentPos.latitude = res.data.singleData[res.data.singleData.length - 1].latitude
           currentPos.longitude = res.data.singleData[res.data.singleData.length - 1].longitude
           this.currentPos = currentPos;
@@ -165,7 +165,7 @@ export default {
     //加载地图api
     // ak申请 https://lbsyun.baidu.com/index.php?title=jspopularGL
     // https://lbsyun.baidu.com/apiconsole/key?application=key#/home
-    loadBMap("请填入ak", "GL")
+    loadBMap("填入ak", "GL")
       .then(() => {
         // 执行初始化地图方法
         let map = (this.map = this.initMap({

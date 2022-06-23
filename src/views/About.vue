@@ -1,5 +1,14 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <!-- <pdf-test></pdf-test> -->
   </div>
 </template>
+
+<script>
+// import PdfTest from './pdf-test/index.vue'
+export default {
+  components: {
+    // PdfTest
+  }
+}
+</script>
